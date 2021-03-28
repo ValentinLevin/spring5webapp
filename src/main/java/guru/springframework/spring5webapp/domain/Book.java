@@ -10,7 +10,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @ToString
-@Entity
+@Entity(name = "book")
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,15 +18,15 @@ public class Book {
     private String title;
     private String isbn;
 
-    @ManyToOne(optional = false,fetch = FetchType.LAZY)
-    @JoinColumn(name = "publisher_id", referencedColumnName = "id")
+    @ManyToOne()
+    @JoinColumn(name = "publisher_id", referencedColumnName = "id", nullable = false)
     private Publisher publisher;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany()
     @JoinTable(
             name = "author_book",
-            joinColumns = @JoinColumn(name = "book_id"),
-            inverseJoinColumns = @JoinColumn(name = "author_id")
+            joinColumns = { @JoinColumn(name = "book_id") },
+            inverseJoinColumns = { @JoinColumn(name = "author_id") }
     )
     private Set<Author> authors = new HashSet<>();
 

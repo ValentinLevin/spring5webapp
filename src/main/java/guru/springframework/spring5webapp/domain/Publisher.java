@@ -12,17 +12,21 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
-@Entity
+@ToString(exclude = { "books" })
+@Entity(name = "publisher")
 public class Publisher {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String name;
-    private String address;
 
-    @OneToMany(mappedBy = "publisher", fetch  = FetchType.LAZY)
-    private Set<Book> books = new HashSet<>();
+    private String name;
+    private String city;
+    private String state;
+    private String zip;
+    private String addressLine1;
+
+    @OneToMany(mappedBy = "publisher", fetch = FetchType.LAZY)
+    private Set<Book> books;
 
     @Override
     public boolean equals(Object o) {
@@ -39,8 +43,7 @@ public class Publisher {
         return id != null ? id.hashCode() : 0;
     }
 
-    public Publisher(String name, String address) {
+    public Publisher(String name) {
         this.name = name;
-        this.address = address;
     }
 }

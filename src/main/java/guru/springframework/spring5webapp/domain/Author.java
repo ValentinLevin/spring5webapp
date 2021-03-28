@@ -9,8 +9,8 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
-@Entity
+@ToString(exclude = "books")
+@Entity(name = "author")
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,8 +18,8 @@ public class Author {
     private String firstName;
     private String lastName;
 
-    @ManyToMany(mappedBy = "authors")
-    private Set<Book> books = new HashSet<>();
+    @ManyToMany(mappedBy = "authors", fetch = FetchType.LAZY)
+    private Set<Book> books;
 
     public Author(String firstName, String lastName) {
         this.firstName = firstName;
