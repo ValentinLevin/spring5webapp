@@ -9,10 +9,8 @@ import guru.springframework.spring5webapp.repositories.PublisherRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 @Component
-public class BootStrapData implements CommandLineRunner {
+public class BootStrapData /*implements CommandLineRunner*/ {
     private final AuthorRepository authorRepository;
     private final BookRepository bookRepository;
     private final PublisherRepository publisherRepository;
@@ -27,7 +25,7 @@ public class BootStrapData implements CommandLineRunner {
         this.publisherRepository = publisherRepository;
     }
 
-    @Override
+/*    @Override
     public void run(String... args) throws Exception {
         Publisher piterPublisher = new Publisher("Piter");
         this.publisherRepository.save(piterPublisher);
@@ -58,5 +56,5 @@ public class BootStrapData implements CommandLineRunner {
         System.out.println("Number of Authors: " + this.authorRepository.count());
         System.out.println("Number of Publishers: " + this.publisherRepository.count());
         System.out.println("Number of books in Publisher entity: " + piterPublisher.getBooks().size());
-    }
+    }*/
 }
