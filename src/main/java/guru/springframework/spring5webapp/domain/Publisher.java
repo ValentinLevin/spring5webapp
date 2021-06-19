@@ -26,7 +26,7 @@ public class Publisher {
     private String addressLine1;
 
     @OneToMany(mappedBy = "publisher", fetch = FetchType.LAZY)
-    private Set<Book> books;
+    private Set<Book> books = new HashSet<>();
 
     @Override
     public boolean equals(Object o) {
