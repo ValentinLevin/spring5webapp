@@ -45,7 +45,6 @@ public class BootStrapData implements CommandLineRunner {
 
         this.authorRepository.save(rod);
         this.bookRepository.save(noEJB);
-
         this.publisherRepository.save(piterPublisher);
 
         Iterable<Publisher> publisherList = this.publisherRepository.findAll();

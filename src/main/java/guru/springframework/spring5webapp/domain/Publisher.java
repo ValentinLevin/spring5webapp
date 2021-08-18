@@ -25,7 +25,7 @@ public class Publisher {
     private String zip;
     private String addressLine1;
 
-    @OneToMany(mappedBy = "publisher", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "publisher", fetch = FetchType.EAGER)
     private Set<Book> books = new HashSet<>();
 
     @Override

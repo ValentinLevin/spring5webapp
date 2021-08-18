@@ -9,7 +9,7 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
+@ToString(exclude = "authors")
 @Entity(name = "book")
 public class Book {
     @Id
